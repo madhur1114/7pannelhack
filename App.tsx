@@ -60,7 +60,6 @@ const App: React.FC = () => {
           throw new Error("API Connection Failed");
         }
       } catch (e) {
-        // Fallback mock data if API is down
         const now = Date.now();
         dataList = Array.from({ length: 15 }, (_, i) => ({
           issueNumber: (now - (i * 60000)).toString().slice(0, 10),
@@ -102,7 +101,7 @@ const App: React.FC = () => {
     setWebviewLoading(true);
     setWebviewError(false);
     if (iframeRef.current) {
-      iframeRef.current.src = GAME_URL;
+      iframeRef.current.src = `${GAME_URL}&t=${Date.now()}`;
     }
   };
 
@@ -191,7 +190,7 @@ const App: React.FC = () => {
               <div className="mt-8 p-4 glass rounded-2xl border border-amber-500/20 max-w-sm">
                 <div className="flex items-center gap-2 text-amber-500 mb-2 justify-center">
                   <AlertTriangle className="w-4 h-4" />
-                  <span className="text-xs font-bold uppercase">Frame Restriction</span>
+                  <span className="text-xs font-bold uppercase">Connection Notice</span>
                 </div>
                 <p className="text-[11px] text-slate-400 mb-4 text-center">Browser security might be restricting the embed. Use the button below if the page does not appear.</p>
                 <button 
