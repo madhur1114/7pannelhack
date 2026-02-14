@@ -1,0 +1,7 @@
+{
+  "name": "Quantum WINGO Fusion",
+  "description": "High-profit AI-driven lottery prediction dashboard with integrated gaming engine.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
